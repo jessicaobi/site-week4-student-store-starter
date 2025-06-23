@@ -1,17 +1,19 @@
 const express = require("express");
-const morgan = require("morgan")
+const morgan = require("morgan");
 const cors = require("cors");
 const app = express();
 
-app.use(cors())
+app.use(cors());
 app.use(morgan("dev"));
 
-app.get('/', cors(), (req, res) => {
+app.get("/", (req, res) => {
+  res.send("in.get");
+});
 
+app.get("/products", (req, res) => {
+  res.send("Hello World!");
+});
 
-}
-)
-
-app.get("/", (req, res) => res.send("Hello World!"));
-
-app.listen(3000, () => console.log("Server running on port 3000 https://localhost:3000"));
+app.listen(3000, () => {
+  console.log(`Server running at http://localhost:3000`);
+});
