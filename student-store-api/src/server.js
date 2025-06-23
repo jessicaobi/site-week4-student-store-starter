@@ -14,4 +14,4 @@ app.get('/', cors(), (req, res) => {
 
 app.get("/", (req, res) => res.send("Hello World!"));
 
-app.listen(3000, () => console.log("Server running on port 3000"));
+app.listen(3000, () => console.log("Server running on port 3000 https://localhost:3000"));

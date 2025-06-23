@@ -10,19 +10,19 @@ const controller = require("../controllers/controllers");
 
 
 //Get all products
-router.get("/", controller.getAll);
+router.get("/products", controller.getAll);
 
 //Get specific product by ID
-router.get("/:id", controller.getById);
+router.get("/products/:id", controller.getById);
 
 //Add a new product to the product list
-router.post("/", controller.create);
+router.post("/products", controller.create);
 
 //Update a product by ID
-router.put("/:id", controller.update);
+router.put("/products/:id", controller.update);
 
 //Delete a product by ID
-router.delete("/:id", controller.remove);
+router.delete("/products/:id", controller.remove);
 
 
 
