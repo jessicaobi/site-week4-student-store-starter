@@ -6,8 +6,16 @@ const prisma = require("../models/prismaClient");
 
 //GET /products
 exports.getAll = async (req, res) => {
-  const products = await prisma.product.findMany(); //syntax - prisma get all products
-  res.json(products);
+    console.log("/products");
+    try {
+        const products = await prisma.product.findMany(); //syntax - prisma get all products
+        res.json(products);
+    }
+    catch (error){
+        throw new Error(error);
+    }
+
+  
 };
 
 

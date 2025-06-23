@@ -2,15 +2,19 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const app = express();
+const productsRouter = require("../routes/products");
+const ordersRouter = require("../routes/orders");
+const orderItemsRouter = require("../routes/orderItems")
 
 app.use(cors());
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => {
-  res.send("in.get");
-});
+app.use("/products", productsRouter);
+app.use("/orders", ordersRouter);
+app.use("/orderItems", orderItemsRouter)
 
-app.get("/products", (req, res) => {
+
+app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
