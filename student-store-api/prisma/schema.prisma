@@ -13,15 +13,16 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product {
+model product {
   id    Int @id @default(autoincrement())
   name String @unique
   description String?
   price  Int
   image_url  String
+  category String
 }
 
-model Orders {
+model order {
   order_id Int @id @default(autoincrement())
   customer_id Int @unique
   total_price Int
@@ -29,7 +30,7 @@ model Orders {
   created_at String
 }
 
-model Order {
+model orderItem {
   order_item_id Int @unique
   order_id Int @unique
   product_id Int @unique

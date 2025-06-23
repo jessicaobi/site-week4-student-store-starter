@@ -51,3 +51,9 @@ exports.remove = async (req, res) => {
   res.status(204).end();
 };
 
+
+/*
+function deleteMany(){
+    return null;
+}
+*/
