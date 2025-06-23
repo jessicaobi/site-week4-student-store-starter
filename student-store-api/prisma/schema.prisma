@@ -20,3 +20,19 @@ model Product {
   price  Int
   image_url  String
 }
+
+model Orders {
+  order_id Int @id @default(autoincrement())
+  customer_id Int @unique
+  total_price Int
+  status String
+  created_at String
+}
+
+model Order {
+  order_item_id Int @unique
+  order_id Int @unique
+  product_id Int @unique
+  quantity Int
+  price Int
+}

@@ -1,47 +1,53 @@
 //All of the potential functions associated with the program
-/*
-// controller file for pokemon routes
+
+// controller file for product routes
 
 const prisma = require("../models/prismaClient");
 
-//GET /pokemon
+//GET /products
 exports.getAll = async (req, res) => {
-  const pokemons = await prisma.pokemon.findMany(); //syntax - prisma get all pokemon
-  res.json(pokemons);
+  const products = await prisma.product.findMany(); //syntax - prisma get all products
+  res.json(products);
 };
 
-//GET /pokemon/:id
+
+
+//GET /products/:id
 exports.getById = async (req, res) => {
   const id = Number(req.params.id); //get id as number from the params
-  const pokemon = await prisma.pokemon.findUnique({ where: { id } });
-  if (!pokemon) return res.status(404).json({ error: "Not found!" });
-  res.json(pokemon);
+  const product = await prisma.product.findUnique({ where: { id } });
+  if (!product) return res.status(404).json({ error: "Not found!" });
+  res.json(product);
 };
 
-// POST /pokemon
+
+
+// POST /products
 exports.create = async (req, res) => {
   const { name, type, description } = req.body;
-  const newPokemon = await prisma.pokemon.create({
-    data: { name, type, description },
+  const newProduct = await prisma.product.create({
+    data: { id, name, description, price, image_url},
   });
-  res.status(201).json(newPokemon);
+  res.status(201).json(newProduct);
 };
 
-//PUT /pokemon/:id
+
+//PUT /product/:id
 exports.update = async (req, res) => {
   const id = Number(req.params.id);
   const { name, type, description } = req.body;
-  const updatedPokemon = await prisma.pokemon.update({
+  const updatedProduct = await prisma.product.update({
     where: { id },
     data: { name, type, description },
   });
-  res.json(updatedPokemon);
+  res.json(updatedProduct);
 };
 
-//DELTE /pokemon/:id
+
+//DELTE /product/:id
 exports.remove = async (req, res) => {
   const id = Number(req.params.id);
-  await prisma.pokemon.delete({ where: { id } });
+  await prisma.product.delete({ where: { id } });
   res.status(204).end();
 };
-*/
+

@@ -8,22 +8,32 @@ const router = express.Router();
 const prisma = new PrismaClient();
 const controller = require("../controllers/controllers");
 
-/*
+
+//Get all products
 router.get("/", controller.getAll);
+
+//Get specific product by ID
 router.get("/:id", controller.getById);
+
+//Add a new product to the product list
 router.post("/", controller.create);
+
+//Update a product by ID
 router.put("/:id", controller.update);
+
+//Delete a product by ID
 router.delete("/:id", controller.remove);
 
-*/
 
-/*
-app.get("/products", async (req, res) => {
-  const products = await prisma.product.findMany();
-  res.json(books);
-});
-*/
 
+
+
+
+
+
+
+
+/*Potential query function
 router.get('/', async (req, res) => {
     const {type, origin} = req.query
     const filters = {}
@@ -46,5 +56,5 @@ router.get('/', async (req, res) => {
         res.status(500).json()
     }
 })
-
+*/
 module.exports = router;
