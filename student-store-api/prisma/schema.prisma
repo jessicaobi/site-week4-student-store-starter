@@ -27,7 +27,7 @@ model order {
   customer_id Int @unique
   total_price Int
   status String
-  created_at String
+  created_at String 
 }
 
 model orderItem {
@@ -35,5 +35,7 @@ model orderItem {
   order_id Int @unique
   product_id Int @unique
   quantity Int
-  price Int
+  price Float
+
+  //User User @relation(fields: [userID], references: [id], onDelete: Cascade)
 }

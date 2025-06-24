@@ -24,35 +24,29 @@ router.put("/:id", controller.update);
 router.delete("/:id", controller.remove);
 
 
-//Potential Stretch Features
-//Get all orders items
-router.get("/orders-items", controller.getAll);
+/*
+//Filter to sort by category
+router.get("/", async (req, res) => {
+    
+  const { category } = req.query;
 
-//Get a specific order item by ID
-router.get("/orders/:order_id/items", controller.getById);
+  const filters = {};
 
-/*Potential query function
-router.get('/', async (req, res) => {
-    const {type, origin} = req.query
-    const filters = {}
+  if (category) {
+    filters.category = category;
+  }
 
-    if (type){
-        filters.type = type
-    }
 
-    if (origin){
-        filters.origin
-    }
-    try{
-        const products = await.prisma.product.findMany({
-            where: filters
-        })
-        res.json(products)
-    }
-    catch (error){
-        console.log(error)
-        res.status(500).json()
-    }
-})
+  try {
+    const products = await prisma.product.findMany({
+      where: filters,
+    });
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server Error" });
+  }
+});
+
 */
 module.exports = router;

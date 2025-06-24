@@ -8,14 +8,32 @@ const prisma = require("../models/prismaClient");
 exports.getAll = async (req, res) => {
     console.log("/products");
     try {
-        const products = await prisma.product.findMany(); //syntax - prisma get all products
+        //Reading queries as categories or sorts
+        const { category } = req.query;
+        const { sort } = req.query;
+        const { sortBy } = req.query;
+
+        //Declaring the intial filters to an empty set
+        const filters = {};
+
+        if (category) {
+          filters.category = category;
+        }
+
+        let orderBy;
+
+        //Ordering name and price by ternary operators
+        if (sortBy === "name" || sortBy === "price"){
+            orderBy = { [sortBy]: sort === "asc" ? "asc" : "desc"}
+        }
+        const products = await prisma.product.findMany({
+            where: filters, orderBy
+        }); //syntax - prisma get all products
         res.json(products);
     }
     catch (error){
         throw new Error(error);
     }
-
-  
 };
 
 
@@ -43,10 +61,10 @@ exports.create = async (req, res) => {
 //PUT /product/:id
 exports.update = async (req, res) => {
   const id = Number(req.params.id);
-  const { name, type, description } = req.body;
+  const { name, category, image_url, description, price } = req.body;
   const updatedProduct = await prisma.product.update({
     where: { id },
-    data: { name, type, description },
+    data: { name, category, image_url, description, price },
   });
   res.json(updatedProduct);
 };
@@ -58,6 +76,7 @@ exports.remove = async (req, res) => {
   await prisma.product.delete({ where: { id } });
   res.status(204).end();
 };
+
 
 
 /*

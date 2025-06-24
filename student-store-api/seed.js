@@ -15,14 +15,15 @@ async function seed() {
     // Load JSON data
     const productsData = JSON.parse(
       fs.readFileSync(
-        path.join(__dirname, "./student-store-api/data/products.json"),
+        path.join(__dirname, "./data/products.json"),
         "utf8"
       )
     );
 
+    
     const ordersData = JSON.parse(
       fs.readFileSync(
-        path.join(__dirname, "./student-store-api/data/orders.json"),
+        path.join(__dirname, "./data/orders.json"),
         "utf8"
       )
     );
@@ -44,10 +45,10 @@ async function seed() {
     for (const order of ordersData.orders) {
       const createdOrder = await prisma.order.create({
         data: {
-          customer: order.customer_id,
+          customer_id: order.customer_id,
           total_price: order.total_price,
           status: order.status,
-          createdAt: new Date(order.created_at),
+          created_at: order.created_at || new toString(Date(order.created_at)),
           // orderItems: {
           //   create: order.items.map((item) => ({
           //     product_id: item.product_id,
@@ -58,7 +59,7 @@ async function seed() {
         },
       });
 
-      console.log(`✅ Created order #${createdOrder.id}`);
+      console.log(`✅ Created order #${createdOrder.order_id}`);
     }
 
     console.log("\n🎉 Seeding complete!");

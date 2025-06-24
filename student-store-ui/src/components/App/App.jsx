@@ -36,7 +36,10 @@ function App() {
     setSearchInputValue(event.target.value);
   };
 
+  //We're expected to complete this function
   const handleOnCheckout = async () => {
+    //Set ischecking out to true
+    //Look at Week 4 Day 2 slides for more info
   }
 
 
