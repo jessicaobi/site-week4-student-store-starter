@@ -16,10 +16,10 @@ datasource db {
 model product {
   id    Int @id @default(autoincrement())
   name String @unique
-  description String?
-  price  Int
-  image_url  String
   category String
+  image_url  String
+  description String?
+  price  Float
 }
 
 model order {

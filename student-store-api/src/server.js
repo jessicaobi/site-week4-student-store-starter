@@ -8,6 +8,7 @@ const orderItemsRouter = require("../routes/orderItems")
 
 app.use(cors());
 app.use(morgan("dev"));
+app.use(express.json());
 
 app.use("/products", productsRouter);
 app.use("/orders", ordersRouter);
