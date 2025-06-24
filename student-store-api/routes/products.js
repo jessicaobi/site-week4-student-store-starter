@@ -5,7 +5,7 @@ const express = require("express");
 const { PrismaClient } = require("@prisma/client");
 const router = express.Router();
 const prisma = new PrismaClient();
-const controller = require("../controllers/controllers");
+const controller = require("../controllers/productsController");
 
 //Product Endpoints
 //Get all products
@@ -23,30 +23,4 @@ router.put("/:id", controller.update);
 //Delete a product by ID
 router.delete("/:id", controller.remove);
 
-
-/*
-//Filter to sort by category
-router.get("/", async (req, res) => {
-    
-  const { category } = req.query;
-
-  const filters = {};
-
-  if (category) {
-    filters.category = category;
-  }
-
-
-  try {
-    const products = await prisma.product.findMany({
-      where: filters,
-    });
-    res.json(products);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server Error" });
-  }
-});
-
-*/
 module.exports = router;
