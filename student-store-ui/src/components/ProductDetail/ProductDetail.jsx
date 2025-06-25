@@ -12,6 +12,19 @@ function ProductDetail({ addToCart, removeFromCart, getQuantityOfItemInCart }) {
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const res = await axios.get(`http://localhost:3000/products/${productId}`);
+        //const { data } = await axios.get(`http://localhost:3000/products/${productId}`);
+        console.log(res);
+        setProduct(res);
+      } catch (err) {
+        console.error("Error fetching products: ", err);
+      }
+    };
+    fetchProduct();
+  }, []);
 
   if (error) {
     return <NotFound />;

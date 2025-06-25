@@ -10,12 +10,11 @@ import { removeFromCart, addToCart, getQuantityOfItemInCart, getTotalItemsInCart
 import "./App.css";
 
 function App() {
-
   // State variables
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All Categories");
   const [searchInputValue, setSearchInputValue] = useState("");
-  const [userInfo, setUserInfo] = useState({ name: "", dorm_number: ""});
+  const [userInfo, setUserInfo] = useState({ name: "", dorm_number: "" });
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState({});
   const [isFetching, setIsFetching] = useState(false);
@@ -36,12 +35,45 @@ function App() {
     setSearchInputValue(event.target.value);
   };
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data } = await axios.get(`http://localhost:3000/products`);
+        console.log(data);
+        setProducts(data);
+      } catch (err) {
+        console.error("Error fetching products: ", err);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  /*  
+  Potential useEffect function
+  
+  useEffect(() => {
+    fetch(`http://localhost:3000/products`).then((response) => {
+      console.log(response);
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+
+      const productsResponse = response.json();
+      setProducts(productsResponse);
+    });
+  }, []);
+
   //We're expected to complete this function
   const handleOnCheckout = async () => {
-    //Set ischecking out to true
-    //Look at Week 4 Day 2 slides for more info
-  }
+    setIsCheckingOut(true);
+  }; */
 
+
+
+  //We're expected to complete this function
+  const handleOnCheckout = async () => {
+    setIsFetching(true);
+  };
 
   return (
     <div className="App">
