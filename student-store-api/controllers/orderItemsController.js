@@ -1,14 +1,13 @@
 //All of the potential functions associated with the program
 
-// controller file for order routes
+// controller file for order item routes
 
 const prisma = require("../models/prismaClient");
 
-//GET /orders
+//GET order items
 exports.getAll = async (req, res) => {
-  console.log("/orders");
+  console.log("/orderItems");
   try {
-    
     //Reading queries as categories or sorts
     const { category } = req.query;
     const { sort } = req.query;
@@ -27,11 +26,11 @@ exports.getAll = async (req, res) => {
     if (sortBy === "name" || sortBy === "price") {
       orderBy = { [sortBy]: sort === "asc" ? "asc" : "desc" };
     }
-    const orders = await prisma.order.findMany({
+    const orderItems = await prisma.orderItems.findMany({
       where: filters,
-      include: {items: true}
+      include: { items: true },
     }); //syntax - prisma get all orders
-    res.json(orders);
+    res.json(orderItems);
   } catch (error) {
     throw new Error(error);
   }
@@ -41,14 +40,13 @@ exports.getAll = async (req, res) => {
 exports.getById = async (req, res) => {
   console.log("getbyid");
   const order_id = Number(req.params.order_id); //get id as number from the params
-  const order = await prisma.order.findUnique(
-    { where: { order_id },
-      include: {items: true}
+  const order = await prisma.order.findUnique({
+    where: { order_id },
+    include: { items: true },
   });
   if (!order) return res.status(404).json({ error: "Not found!" });
   res.json(order);
 };
-
 
 // POST /orders
 exports.create = async (req, res) => {
@@ -59,24 +57,6 @@ exports.create = async (req, res) => {
   res.status(201).json(newOrder);
 };
 
-//POST new order item  to the order list
-exports.addItem = async (req, res) => {
-  try {
-    console.log("add item");
-    const order_id = Number(req.params.order_id);
-    const { product_id, quantity, price } = req.body;
-
-    const newOrderItem = await prisma.orderItem.create({
-      data: { order_id, product_id, quantity, price },
-    });
-
-    res.status(201).json(newOrderItem);
-  } catch (error) {
-    throw new Error(error);
-  }
-};
-
-
 //PUT /order/:id
 exports.update = async (req, res) => {
   const order_id = Number(req.params.order_id);
@@ -86,28 +66,6 @@ exports.update = async (req, res) => {
     data: { order_id, customer_id, total_price, status, created_at },
   });
   res.json(updatedOrder);
-};
-
-exports.getTotal = async (req, res) => {
-  console.log("get total");
-  const order_id = Number(req.params.order_id); //get id as number from the params
-  const order = await prisma.order.findUnique({
-    where: { order_id },
-    include: { items: true },
-  });
-  let totalPrice = 0;
-  for (let i = 0; i < order.items.length; i++) {
-    totalPrice += order.items[i].price;
-  }
-
-  const updatedOrder = await prisma.order.update({
-    where: {order_id},
-    data: { total_price: totalPrice},
-    include: {items: true}
-  });
-
-res.json(updatedOrder);
-console.log(totalPrice);
 };
 
 //DELTE /order/:id

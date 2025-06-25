@@ -27,7 +27,7 @@ model product {
 model order {
   order_id Int @id @default(autoincrement())
   customer_id Int @unique
-  total_price Int
+  total_price Float
   status String
   created_at String
   items orderItem[] @relation("OrderOrderItems")

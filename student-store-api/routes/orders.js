@@ -14,8 +14,14 @@ router.get("/", controller.getAll);
 //Get specific order by ID
 router.get("/:order_id", controller.getById);
 
+//Get order total by order ID
+router.get("/:order_id/total", controller.getTotal);
+
 //Add a new order to the product list
 router.post("/", controller.create);
+
+//Add items to an existing order
+router.post("/:order_id/items", controller.addItem)
 
 //Update an order by ID
 router.put("/:order_id", controller.update);
