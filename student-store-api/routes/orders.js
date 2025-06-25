@@ -21,7 +21,7 @@ router.get("/:order_id/total", controller.getTotal);
 router.post("/", controller.create);
 
 //Add items to an existing order
-router.post("/:order_id/items", controller.addItem)
+router.post("/:order_id/items", controller.addItem);
 
 //Update an order by ID
 router.put("/:order_id", controller.update);

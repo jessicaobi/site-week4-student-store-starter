@@ -7,7 +7,18 @@ import Home from "../Home/Home";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import NotFound from "../NotFound/NotFound";
 import { removeFromCart, addToCart, getQuantityOfItemInCart, getTotalItemsInCart } from "../../utils/cart";
+import { calculateOrderSubtotal, calculateTotal } from  "../../utils/calculations";
 import "./App.css";
+
+
+
+
+
+
+
+
+
+
 
 function App() {
   // State variables
@@ -48,30 +59,28 @@ function App() {
     fetchProducts();
   }, []);
 
-  /*  
-  Potential useEffect function
-  
-  useEffect(() => {
-    fetch(`http://localhost:3000/products`).then((response) => {
-      console.log(response);
-      if (!response.ok) {
-        throw new Error(`Error! status: ${response.status}`);
+  //We're expected to complete this function
+  const handleOnCheckout = async () => {
+    console.log ("something happening");
+
+    const cartItems  = Object.entries(cart).map(([product_id, quantity]) => {
+      const product = products.find(p => p.id === Number(product_id));
+      return {
+        price: product.price,
+        quantity: quantity
       }
+    })
 
-      const productsResponse = response.json();
-      setProducts(productsResponse);
-    });
-  }, []);
-
-  //We're expected to complete this function
-  const handleOnCheckout = async () => {
-    setIsCheckingOut(true);
-  }; */
+      const subTotal = calculateOrderSubtotal(cartItems);
+      const finalTotal = calculateTotal(subTotal);
 
 
 
-  //We're expected to complete this function
-  const handleOnCheckout = async () => {
+    const res = await axios.post("http://localhost:3000/orders", {
+      customer_id: parseInt(userInfo.name),
+      total_price: finalTotal,
+      status: "completed"
+    })
     setIsFetching(true);
   };
 

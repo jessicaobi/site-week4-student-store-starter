@@ -29,7 +29,7 @@ model order {
   customer_id Int @unique
   total_price Float
   status String
-  created_at String
+  created_at DateTime @default(now())
   items orderItem[] @relation("OrderOrderItems")
 }
 
