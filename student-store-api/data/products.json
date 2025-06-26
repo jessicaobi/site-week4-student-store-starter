@@ -4,9 +4,9 @@
         "id": 1,
         "name": "College Hoodie",
         "category": "Apparel",
-        "image_url": "https://tinyurl.com/college-hoodie",
+        "image_url": "https://bkstr.scene7.com/is/image/Bkstr/334-G1093-E3467575-Navy?$GMCategory_ET$&fmt=webp",
         "description": "Comfortable and stylish hoodie with the college logo.",
-        "price": 29.99
+        "price": 74.00
       },
       {
         "id": 2,
@@ -20,33 +20,33 @@
         "id": 3,
         "name": "College Notebook",
         "category": "Supplies",
-        "image_url": "https://tinyurl.com/college-notebook",
+        "image_url": "https://bkstr.scene7.com/is/image/Bkstr/334-32310-DIGI-A24W-School-Specific?$GMCategory_ET$&fmt=webp",
         "description": "Durable notebook with college branding, perfect for note-taking.",
-        "price": 6.99
+        "price": 5.99
       },
       {
         "id": 4,
         "name": "College Pen",
         "category": "Supplies",
-        "image_url": "https://tinyurl.com/college-pen",
+        "image_url": "https://bkstr.scene7.com/is/image/Bkstr/334-DA-1770-FSNS-Blue?$GMCategory_ET$&fmt=webp",
         "description": "Smooth-writing pen with college logo, ideal for writing and exams.",
-        "price": 1.99
+        "price": 14.00
       },
       {
         "id": 5,
         "name": "College Mug",
         "category": "Accessories",
-        "image_url": "https://tinyurl.com/college-mug",
+        "image_url": "https://bkstr.scene7.com/is/image/Bkstr/334-EMF4545-141-Light-Blue?$GMCategory_ET$&fmt=webp",
         "description": "Ceramic mug with college emblem, perfect for coffee or tea.",
-        "price": 9.99
+        "price": 22.00
       },
       {
         "id": 6,
         "name": "College Beanie",
         "category": "Apparel",
-        "image_url": "https://tinyurl.com/college-beanie",
+        "image_url": "https://bkstr.scene7.com/is/image/Bkstr/6-38-58--81-1-Black?$GMCategory_ET$&fmt=webp",
         "description": "Warm and cozy beanie with the college logo, perfect for cold weather.",
-        "price": 14.99
+        "price": 16.00
       },
       {
         "id": 7,

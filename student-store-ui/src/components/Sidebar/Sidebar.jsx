@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom"
 import ShoppingCart from "../ShoppingCart/ShoppingCart"
-import logo from "../../assets/codepath.svg"
+import logo from "../../assets/spelman-college (1).png";
 import "./Sidebar.css"
-
 
 function Sidebar({ cart, isOpen, products, userInfo, setUserInfo, toggleSidebar, handleOnCheckout,isCheckingOut, order, setOrder,error,}) {
   return (
