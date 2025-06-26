@@ -16,10 +16,10 @@ datasource db {
 model product {
   id    Int @id @default(autoincrement())
   name String @unique
-  category String
-  image_url  String
   description String?
   price  Float
+  image_url  String
+  category String
   items orderItem[] @relation("ProductOrderItems")
 
 }
@@ -34,13 +34,11 @@ model order {
 }
 
 model orderItem {
-  product product @relation("ProductOrderItems", fields: [product_id], references: [id])
-  order   order   @relation("OrderOrderItems", fields: [order_id], references: [order_id])
   order_item_id Int @id @default(autoincrement())
   order_id Int 
   product_id Int 
   quantity Int
   price Float
-
-  //User User @relation(fields: [userID], references: [id], onDelete: Cascade)
+  product product @relation("ProductOrderItems", fields: [product_id], references: [id], onDelete: Cascade)
+  order   order   @relation("OrderOrderItems", fields: [order_id], references: [order_id], onDelete: Cascade)
 }

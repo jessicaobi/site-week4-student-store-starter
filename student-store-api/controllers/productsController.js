@@ -76,11 +76,3 @@ exports.remove = async (req, res) => {
   await prisma.product.delete({ where: { id } });
   res.status(204).end();
 };
-
-
-
-/*
-function deleteMany(){
-    return null;
-}
-*/
