@@ -6,19 +6,17 @@ import Sidebar from "../Sidebar/Sidebar";
 import Home from "../Home/Home";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import NotFound from "../NotFound/NotFound";
-import { removeFromCart, addToCart, getQuantityOfItemInCart, getTotalItemsInCart } from "../../utils/cart";
-import { calculateOrderSubtotal, calculateTotal } from  "../../utils/calculations";
+import {
+  removeFromCart,
+  addToCart,
+  getQuantityOfItemInCart,
+  getTotalItemsInCart,
+} from "../../utils/cart";
+import {
+  calculateOrderSubtotal,
+  calculateTotal,
+} from "../../utils/calculations";
 import "./App.css";
-
-
-
-
-
-
-
-
-
-
 
 function App() {
   // State variables
@@ -61,27 +59,42 @@ function App() {
 
   //We're expected to complete this function
   const handleOnCheckout = async () => {
-    console.log ("something happening");
+    console.log("something happening");
 
-    const cartItems  = Object.entries(cart).map(([product_id, quantity]) => {
-      const product = products.find(p => p.id === Number(product_id));
+    const cartItems = Object.entries(cart).map(([product_id, quantity]) => {
+      const product = products.find((p) => p.id === Number(product_id));
       return {
         price: product.price,
-        quantity: quantity
-      }
-    })
+        quantity: quantity,
+      };
+    });
 
-      const subTotal = calculateOrderSubtotal(cartItems);
-      const finalTotal = calculateTotal(subTotal);
-
-
+    const subTotal = calculateOrderSubtotal(cartItems);
+    const finalTotal = calculateTotal(subTotal);
 
     const res = await axios.post("http://localhost:3000/orders", {
       customer_id: parseInt(userInfo.name),
       total_price: finalTotal,
-      status: "completed"
-    })
+      status: "completed",
+    });
+
+    const order = res.data;
+    console.log("ORDER", order);
+
+    for (const [product_id, quantity] of Object.entries(cart)) {
+      const product = products.find((p) => p.id === Number(product_id));
+
+      await axios.post(`http://localhost:3000/orders/${order.order_id}/items`, {
+        product_id: Number(product_id),
+        quantity: Number(quantity),
+        price: Number(product.price),
+        order_id: Number(order.order_id),
+      });
+    }
+
     setIsFetching(true);
+    setCart({});
+    
   };
 
   return (
@@ -160,4 +173,3 @@ function App() {
 }
 
 export default App;
- 
