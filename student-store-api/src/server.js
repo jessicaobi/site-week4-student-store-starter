@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use("/products", productsRouter);
 app.use("/orders", ordersRouter);
-app.use("/orderItems", orderItemsRouter)
+app.use("/order-items", orderItemsRouter)
 
 
 app.get("/", (req, res) => {

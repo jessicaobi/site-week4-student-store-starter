@@ -70,7 +70,7 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 
 - [ ] **Added Endpoints**
   - [ ] `GET /order-items`: Create an endpoint for fetching all order items in the database.
-  - [ ] `POST /orders/:order_id/items` Create an endpoint that adds a new order item to an existing order. 
+  - [X] `POST /orders/:order_id/items` Create an endpoint that adds a new order item to an existing order. 
 - [ ] **Past Orders Page**
   - [ ] Build a page in the UI that displays the list of all past orders.
   - [ ] The page lists all past orders for the user, including relevant information such as:
