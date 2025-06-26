@@ -1,6 +1,4 @@
-//All of the potential functions associated with the program
-
-// controller file for product routes
+// Controller file for product routes
 
 const prisma = require("../models/prismaClient");
 
@@ -8,34 +6,35 @@ const prisma = require("../models/prismaClient");
 exports.getAll = async (req, res) => {
     console.log("/products");
     try {
-        //Reading queries as categories or sorts
-        const { category } = req.query;
-        const { sort } = req.query;
-        const { sortBy } = req.query;
+      //Reading queries as categories or sorts
+      const { category } = req.query;
+      const { sort } = req.query;
+      const { sortBy } = req.query;
 
-        //Declaring the intial filters to an empty set
-        const filters = {};
+      //Declaring the intial filters to an empty set
+      const filters = {};
 
-        if (category) {
-          filters.category = category;
-        }
+      if (category) {
+        filters.category = category;
+      }
 
-        let orderBy;
+      let orderBy;
 
-        //Ordering name and price by ternary operators
-        if (sortBy === "name" || sortBy === "price"){
-            orderBy = { [sortBy]: sort === "asc" ? "asc" : "desc"}
-        }
-        const products = await prisma.product.findMany({
-            where: filters, orderBy
-        }); //syntax - prisma get all products
-        res.json(products);
+      //Ordering name and price by ternary operators
+      if (sortBy === "name" || sortBy === "price") {
+        orderBy = { [sortBy]: sort === "asc" ? "asc" : "desc" };
+      }
+      //Syntax - prisma get all products
+      const products = await prisma.product.findMany({
+        where: filters,
+        orderBy,
+      });
+      res.json(products);
     }
     catch (error){
         throw new Error(error);
     }
 };
-
 
 
 //GET /products/:id
@@ -45,7 +44,6 @@ exports.getById = async (req, res) => {
   if (!product) return res.status(404).json({ error: "Not found!" });
   res.json(product);
 };
-
 
 
 // POST /products

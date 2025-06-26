@@ -1,17 +1,16 @@
-//All of the potential functions associated with the program
-
-// controller file for order item routes
+// Controller file for order item routes
 
 const prisma = require("../models/prismaClient");
 
 //GET order items
 exports.getAll = async (req, res) => {
-  console.log("/orderItems");
+  console.log("/order-items");
   try {
-    const orderItems = await prisma.orderItem.findMany({
-    }); //syntax - prisma get all orders
+    //Syntax - prisma get all order items
+    const orderItems = await prisma.orderItem.findMany();
+    //Returning all order items
     res.json(orderItems);
   } catch (error) {
-    throw new Error(error);
+      throw new Error(error);
   }
 };

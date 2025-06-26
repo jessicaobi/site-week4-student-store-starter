@@ -1,5 +1,4 @@
-//Set up of routes
-//All of these connect with the controllers
+//Set up orders routes that connects to its respective controller
 
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");

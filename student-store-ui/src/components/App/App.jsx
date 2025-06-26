@@ -44,6 +44,7 @@ function App() {
     setSearchInputValue(event.target.value);
   };
 
+  //Loading in the products
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -57,10 +58,10 @@ function App() {
     fetchProducts();
   }, []);
 
-  //We're expected to complete this function
+  //Function to hand the order upon submission
   const handleOnCheckout = async () => {
-    console.log("something happening");
 
+    //Looping through the cart items
     const cartItems = Object.entries(cart).map(([product_id, quantity]) => {
       const product = products.find((p) => p.id === Number(product_id));
       return {
@@ -69,9 +70,11 @@ function App() {
       };
     });
 
+    //Calculating the total
     const subTotal = calculateOrderSubtotal(cartItems);
     const finalTotal = calculateTotal(subTotal);
 
+    //Sending the order to the database
     const res = await axios.post("http://localhost:3000/orders", {
       customer_id: parseInt(userInfo.name),
       total_price: finalTotal,
@@ -79,8 +82,8 @@ function App() {
     });
 
     const order = res.data;
-    console.log("ORDER", order);
 
+    //Adding the order items
     for (const [product_id, quantity] of Object.entries(cart)) {
       const product = products.find((p) => p.id === Number(product_id));
 
@@ -93,8 +96,9 @@ function App() {
     }
 
     setIsFetching(true);
+    //Upon submission, emptying the cart
     setCart({});
-    
+
   };
 
   return (

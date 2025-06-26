@@ -68,8 +68,8 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 
 ### Stretch Features
 
-- [ ] **Added Endpoints**
-  - [ ] `GET /order-items`: Create an endpoint for fetching all order items in the database.
+- [X] **Added Endpoints**
+  - [X] `GET /order-items`: Create an endpoint for fetching all order items in the database.
   - [X] `POST /orders/:order_id/items` Create an endpoint that adds a new order item to an existing order. 
 - [ ] **Past Orders Page**
   - [ ] Build a page in the UI that displays the list of all past orders.
