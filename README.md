@@ -98,7 +98,7 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 
 ### Walkthrough Video
 
-Walkthrough Video: https://drive.google.com/file/d/11I5zWYM6CYgligwoT45nuPt1wDmgtNO-/view?usp=sharing
+Walkthrough Video: https://drive.google.com/file/d/19tsTOSGcAzQxnIU-BxNE-vNxR3NHZWl1/view?usp=sharing
 
 ### Reflection
 
