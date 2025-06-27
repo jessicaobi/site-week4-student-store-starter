@@ -43,7 +43,7 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
     - [X] `product_id`
     - [X] `quantity`
     - [X] `price`
-  - [ ] Implement methods for fetching and creating order items.  
+  - [X] Implement methods for fetching and creating order items.  
   - [ ] **VIDEO WALKTHROUGH SPECIAL INSTRUCTIONS**: Use Prisma Studio to demonstrate the creation of all attributes (table columns) in your Order Items Model.
 - [X] **API Endpoints**
   - [X] Application supports the following **Product Endpoints**:
@@ -106,20 +106,29 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+I think the labs actually greatly helped in the creation of the project. This was actually one of the units where doing the labs were almost imperative to understanding what is going on in the actual project. This goes from things such as setting up prisma and postgresql which were imperative for the completion of this project. I also think going over things such as the CRUD routes was definitely helpful with understanding this project. The labs were very clear, different from the milestones with the project that had unclear instructions.
+
+Some features that I felt unprepared to complete was just things that had to do with the clarity such as the milestones stating classes even though we were instructed to use models in the schema. I think the project milestones are just outdated and unclear all around when it comes to instructions in comparison to the previous projects.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+If I had more time, I definitely would have changed my front end more and customize some things. I also would have added another page where the user can see all of the past orders. I wish I could have also included an alert when the user submits.
+
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+I think the overall order of my presentation ended up going very well. The only thing that didn't go as planned was my code breaking right before the presentation. I later realized that this had to do with the customer_id attribute within the order model, where I set it to be unique. So when I tried to add another order of the same customer id, the entire thing would break. So nothing would get added to Prisma, Postman would break, and so on. However, upon submission, I actually did not know that this was the problem. So, my handle checkout feature actually wasn't fully working, but I did not point that out to the audience which I think was a good choice. I was still able to showcase all the features successfully. I think the only mishap was when I tried to get all the orders on Postman, it didn't work. And after I did that and tried to reload the page, the products also didn't showup, but that wasn't until the feedback section and a lot of people said they did not notice.
+
+I think I would definitely try to implement more stretch goals on this project if I had more time. A lot of people had the user get an alert if the user submitted an order which was another cool idea. I think it would be a good idea to also have all the previous order of the user.
 
 ### Open-source libraries used
-
-- Add any links to open-source libraries used in your project.
+- Github Demo provided by the instructors: https://github.com/dst2609/ftl-code-demo-2025/tree/main/week4/FullStackPokemonApp
+- Copilot
 
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+
+Oliver & Devarsh - database and postgresql setup
+Lucia - connecting front end to back end and organizing controllers and routes
+Liliana - handle checkout function
