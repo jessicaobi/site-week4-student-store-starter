@@ -98,11 +98,7 @@ Deployed Application (optional): [Student Store Deployed Site](ADD_LINK_HERE)
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-I apologize that this is quite a long video, but you can watch it at two times speed if necessary.
-Video Recording Part 1: https://drive.google.com/file/d/1HiLbPQr4Nu0SC-rvgcGTvbkRlxtqmJWp/view?usp=sharing
-Video Recording Part 2: https://drive.google.com/file/d/1oiFm27PHoTcgUIbhJZjKfJMEbpmQqncq/view?usp=sharing
+Walkthrough Video: https://drive.google.com/file/d/11I5zWYM6CYgligwoT45nuPt1wDmgtNO-/view?usp=sharing
 
 ### Reflection
 
